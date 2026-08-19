@@ -9,7 +9,7 @@ export default function NavbarComponent() {
         <ul className='flex gap-6'>
             <li><Link href="/dashboard">Dashboard</Link></li>
             <li><Link href="/blogs">Blogs</Link></li>
-            <li><Link href="/register">Register</Link></li>
+            <li><Link href="/api/auth/signin">Register</Link></li>
         </ul>
 
     </div>
