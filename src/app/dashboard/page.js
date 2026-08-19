@@ -1,9 +1,16 @@
-import React from 'react'
-
-export default function DashboardPage() {
+import React from "react";
+import { getServerSession } from "next-auth";
+import { options } from "../lib/nextauth";
+export default async function DashboardPage() {
+  const session = await getServerSession(options);
+  console.log(session);
   return (
     <div>
-      Dashboard Page
+      {!session ? (
+        <p>It is not authanticated </p>
+      ) : (
+        <p>{session.user?.email}</p>
+      )}
     </div>
-  )
+  );
 }
