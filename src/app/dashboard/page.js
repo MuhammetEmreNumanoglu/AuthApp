@@ -1,9 +1,13 @@
 import React from "react";
 import { getServerSession } from "next-auth";
 import { options } from "../lib/nextauth";
+import { redirect } from "next/navigation";
 export default async function DashboardPage() {
   const session = await getServerSession(options);
-  console.log(session);
+  if(!session)
+  {
+    redirect("/")
+  }
   return (
     <div>
       {!session ? (
