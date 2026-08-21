@@ -11,6 +11,7 @@
   "dependencies": {
     "@heroui/react": "^3.2.4",
     "@heroui/styles": "^3.2.4",
+    "@tailwindcss/vite": "^4.3.3",
     "bcryptjs": "^3.0.3",
     "formik": "^2.4.9",
     "mongoose": "^9.9.3",
@@ -26,6 +27,6 @@
     "eslint": "^9",
     "eslint-config-next": "16.3.1",
     "saas": "^1.0.0",
-    "tailwindcss": "^4"
+    "tailwindcss": "^4.3.3"
   }
 }
