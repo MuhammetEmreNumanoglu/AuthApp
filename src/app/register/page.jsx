@@ -35,9 +35,12 @@ export default function RegisterPage() {
             type="email"
             placeholder="Enter Your Email"
             name="email"
-            className="w-full px-3 py-2 border rounded-xl focus:outline-none"
+            className={`w-full px-3 py-2 border rounded-xl focus:outline-none ${formik.touched.email && formik.errors.email ? "border-red-500" : "border-gray-400"} `}
             {...formik.getFieldProps("email")}
           />
+          {formik.touched.email && formik.errors.email && (
+            <p className="text-red-500 mt-2">{formik.errors.email}</p>
+          )}
         </div>
         <div className=" mt-5">
           <label className="px-3">Password</label>
@@ -45,9 +48,12 @@ export default function RegisterPage() {
             type="text"
             placeholder="Enter Your Password"
             name="password"
-            className="w-full px-3 py-2 border rounded-xl focus:outline-none"
+            className={`w-full px-3 py-2 border rounded-xl focus:outline-none ${formik.touched.password && formik.errors.password ? "border-red-500" : "border-gray-400"} `}
             {...formik.getFieldProps("password")}
           />
+          {formik.touched.password && formik.errors.password && (
+            <p className="text-red-500 mt-2">{formik.errors.password}</p>
+          )}
         </div>
         <div>
           <button
@@ -58,10 +64,14 @@ export default function RegisterPage() {
           </button>
           <button
             type="button"
-            onClick={()=>{setFormType(!formType)}}
+            onClick={() => {
+              setFormType(!formType);
+            }}
             className="mt-5 rounded-lg p-2 w-full hover:bg-blue-600 border border-blue-600 transition-colors"
           >
-            {formType ? "Already Registered ? Sign In  " : "New User ? Register Here"}
+            {formType
+              ? "Already Registered ? Sign In  "
+              : "New User ? Register Here"}
           </button>
         </div>
       </form>
