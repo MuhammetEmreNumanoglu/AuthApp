@@ -17,6 +17,8 @@ export async function POST(request) {
   try {
     await newUser.save();
 
+    console.log("User:", newUser);
+
     return Response.json(
       {
         message: "User created successfully",
@@ -25,9 +27,7 @@ export async function POST(request) {
           email: newUser.email,
         },
       },
-      {
-        status: 201,
-      },
+      { status: 201 },
     );
   } catch (err) {
     return Response.json({ error: "User Added Error" }, { status: 500 });
