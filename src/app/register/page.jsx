@@ -3,7 +3,8 @@
 import React, { useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-
+import { signIn } from "next-auth/react";
+import { redirect } from "next/navigation";
 export default function RegisterPage() {
   const [formType, setFormType] = useState(false);
   const formik = useFormik({
@@ -31,6 +32,14 @@ export default function RegisterPage() {
         if (!res.ok) {
           alert(data.error);
         }
+      }
+      if (!formType) {
+        await signIn("credentials", {
+          redirect: true,
+          email: values.email,
+          password: values.password,
+          callbackUrl:"/dashboard"
+        });
       }
     },
   });
