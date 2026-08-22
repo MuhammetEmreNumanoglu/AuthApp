@@ -19,7 +19,20 @@ export default function RegisterPage() {
         .min(3, "Password must at least 3 characters")
         .required("Password is required"),
     }),
-    onSubmit: async (values) => {},
+    onSubmit: async (values) => {
+      if (formType) {
+        const res = await fetch("/api/register", {
+          method: "POST",
+          header: { "Content-Type": "application/json" },
+          body: JSON.stringify(values),
+        });
+        const data = await res.json();
+        console.log(data);
+        if (!res.ok) {
+          alert(data.error);
+        }
+      }
+    },
   });
   return (
     <div>
