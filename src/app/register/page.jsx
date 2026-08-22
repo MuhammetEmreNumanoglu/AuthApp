@@ -25,7 +25,7 @@ export default function RegisterPage() {
     <div>
       <form
         action=""
-        className="bg-gray-800 max-w-sm mx-auto text-white p-6 rounded-xl shadow-xl text-center"
+        className="bg-gray-800 max-w-sm mx-auto mt-50 text-white p-6 rounded-xl shadow-xl text-center"
         onSubmit={formik.handleSubmit}
       >
         <h1 className="text-3xl py-5">{formType ? "Register" : "Sign in"}</h1>
