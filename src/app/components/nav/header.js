@@ -48,7 +48,7 @@ export default function NavbarComponent() {
               <li>
                 <button
                   onClick={logOut}
-                  className="btn btn-danger bg-red-500 p-2 rounded"
+                  className=" bg-red-500 p-2 rounded"
                 >
                   Log Out
                 </button>
