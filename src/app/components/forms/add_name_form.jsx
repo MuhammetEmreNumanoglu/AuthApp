@@ -1,9 +1,8 @@
 "use client";
-import addCategory from "@/app/lib/actions/actions";
+import AddName1 from "@/app/lib/actions/name_action";
 import { useActionState } from "react";
-export default function AddCategoryComponent() {
-  const [state, action, isPending] = useActionState(addCategory, null);
-
+export default function AddName() {
+  const [state, action, isPending] = useActionState(AddName1, null);
   return (
     <div>
       <form
@@ -11,12 +10,10 @@ export default function AddCategoryComponent() {
         className="w-1/4 mx-auto shadow-lg shadow-gray-600 p-6 m-5 rounded-4xl
        "
       >
-        <h1 className="text-2xl text-center mb-2  font-semibold">
-          Add Category
-        </h1>
+        <h1 className="text-2xl text-center mb-2  font-semibold">Add Name</h1>
         <hr className="mb-6" />
         <div>
-          <label className="block text-gray-800 "> Category Name</label>
+          <label className="block text-gray-800 "> Name</label>
           <input
             className="w-full border border-gray-500 rounded-lg focus:outline-none focus:ring focus:ring-[#349302] tranisiton-all duration-200"
             type="text"
@@ -24,11 +21,11 @@ export default function AddCategoryComponent() {
           />
         </div>
         <div>
-          <label> Description</label>
+          <label> Surname</label>
           <input
             className="w-full border border-gray-500 rounded-lg focus:outline-none focus:ring focus:ring-[#349302] tranisiton-all duration-200"
             type="text"
-            name="description"
+            name="surname"
           />
         </div>
         <button
@@ -37,13 +34,6 @@ export default function AddCategoryComponent() {
         >
           Save
         </button>
-        {!state?.success ?(
-          <div className="text-red-600 mt-3">
-            {state.message.map((error, index) => (
-              <p key={index}>{error}</p>
-            ))}
-          </div>
-        ):<div className="text-green-700 mt-2">Category Added</div>}
       </form>
     </div>
   );
