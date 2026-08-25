@@ -1,10 +1,13 @@
 "use client";
-
+import addCategory from "@/app/lib/actions/actions";
+import { useActionState } from "react";
 export default function AddCategoryComponent() {
+  const [state, action, isPending] = useActionState(addCategory, null);
+
   return (
     <div>
       <form
-        action=""
+        action={action}
         className="w-1/4 mx-auto shadow-lg shadow-gray-600 p-6 m-5 rounded-4xl
        "
       >
