@@ -25,7 +25,8 @@ export default function AddCategoryComponent() {
         </div>
         <div>
           <label> Description</label>
-          <input
+          <textarea
+            rows={4}
             className="w-full border border-gray-500 rounded-lg focus:outline-none focus:ring focus:ring-[#349302] tranisiton-all duration-200"
             type="text"
             name="description"
@@ -33,17 +34,20 @@ export default function AddCategoryComponent() {
         </div>
         <button
           className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-1.5 mt-2 rounded-xl shadow-md shadow-blue-500/30 hover:shadow-lg hover:shadow-blue-500/40 transition-all duration-200 w-full"
+          disabled={isPending}
           type="submit"
         >
-          Save
+          {isPending ? "Adding" : "Save"}
         </button>
-        {!state?.success ?(
+        {!state?.success ? (
           <div className="text-red-600 mt-3">
-            {state.message.map((error, index) => (
+            {state?.message.map((error, index) => (
               <p key={index}>{error}</p>
             ))}
           </div>
-        ):<div className="text-green-700 mt-2">Category Added</div>}
+        ) : (
+          <div className="text-green-700 mt-2">Category Added</div>
+        )}
       </form>
     </div>
   );
