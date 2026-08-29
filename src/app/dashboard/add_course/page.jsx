@@ -7,3 +7,4 @@ export default async function AddCoursePage() {
   const categories = await Category.find({})
   return <div><AddCourseComponent categoryList={JSON.parse(JSON.stringify(categories))}/></div>;
 }
+ 
