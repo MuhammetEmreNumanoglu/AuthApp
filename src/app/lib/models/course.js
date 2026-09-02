@@ -1,32 +1,50 @@
-import mongoose, { mongo } from "mongoose";
+import mongoose from "mongoose";
+
 const { Schema } = mongoose;
 
 const courseSchema = new Schema(
   {
-    title: String,
+    title: {
+      type: String,
+      required: true,
+    },
+
     category: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Category",
       required: true,
     },
+
     description: {
       type: String,
       required: true,
     },
-    price: Number,
-    date: Date,
+
+    price: {
+      type: Number,
+      required: true,
+    },
+
+    date: {
+      type: Date,
+      required: true,
+    },
+
     slug: {
       type: String,
       unique: true,
       index: true,
     },
   },
-  { timestamps: true },
+  {
+    timestamps: true,
+  },
 );
 
 courseSchema.pre("save", function () {
   if (!this.slug) {
-    this.slug = this_id.toString();
+    this.slug = this._id.toString();
   }
 });
+
 export default mongoose.models.Course || mongoose.model("Course", courseSchema);
