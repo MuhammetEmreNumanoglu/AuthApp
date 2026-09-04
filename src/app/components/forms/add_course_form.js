@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, forwardRef } from "react";
+import { useState, forwardRef, useTransition } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import DatePicker from "react-datepicker";
@@ -23,9 +23,9 @@ const CustomPickerInput = forwardRef(
 
 CustomPickerInput.displayName = "CustomPickerInput";
 
-function AddCourseComponent({ categoryList }) {
+function AddCourseComponent({ categoryList, postCourse }) {
   const [startDate, setStartDate] = useState(null);
-
+  const [isPending, startTransition] = useTransition();
   const formik = useFormik({
     initialValues: {
       title: "",
@@ -51,10 +51,20 @@ function AddCourseComponent({ categoryList }) {
     }),
 
     onSubmit: async (values) => {
-      console.log(values);
+      addCourseSubmit(values);
     },
   });
-
+  const addCourseSubmit = async (values) => {
+    startTransition(async () => {
+      const { success, message } = await postCourse(values);
+      if (!success) {
+        {
+        }
+      } else {
+        redirect("/")
+      }
+    });
+  };
   return (
     <div>
       <form
