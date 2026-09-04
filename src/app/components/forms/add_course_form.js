@@ -5,7 +5,8 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-
+import { toast } from "react-toastify";
+import { redirect } from "next/navigation";
 const CustomPickerInput = forwardRef(
   ({ value, onClick, error, touched }, ref) => (
     <button
@@ -59,8 +60,10 @@ function AddCourseComponent({ categoryList, postCourse }) {
       const { success, message } = await postCourse(values);
       if (!success) {
         {
+          toast.error("Course Can't Added ",{position:"top-right"})
         }
       } else {
+        toast.success("Course Added Correctly",{position:"top-right"})
         redirect("/")
       }
     });
