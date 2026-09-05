@@ -10,15 +10,14 @@ export default async function AddCoursePage() {
   async function addCourse(formData) {
     "use server";
     await DBConnect();
-try {
+    try {
       const newCourse = new Course({ ...formData });
-    await newCourse.save();
-    revalidatePath("/")
-    return {success:true,message:"Okay"}
-} catch (error) {
-      return {success:false,message:error.message}
-
-}
+      await newCourse.save();
+      revalidatePath("/");
+      return { success: true, message: "Okay" };
+    } catch (error) {
+      return { success: false, message: error.message };
+    }
   }
   return (
     <div>

@@ -210,10 +210,10 @@ function AddCourseComponent({ categoryList, postCourse }) {
 
         {/* SUBMIT BUTTON */}
         <button
-          className="mt-2 w-full rounded-xl bg-blue-500 py-1.5 font-semibold text-white shadow-md shadow-blue-500/30 transition-all duration-200 hover:bg-blue-600 hover:shadow-lg hover:shadow-blue-500/40"
+          className="mt-2 w-full rounded-xl bg-blue-500 py-1.5 font-semibold text-white shadow-md shadow-blue-500/30 transition-all duration-200 hover:bg-blue-600 hover:shadow-lg hover:shadow-blue-500/40 " disabled={isPending}
           type="submit"
         >
-          Add
+          {isPending ? "Adding...":"Add"}
         </button>
       </form>
     </div>
