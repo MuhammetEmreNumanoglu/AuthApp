@@ -1,7 +1,16 @@
-import Image from "next/image";
+import CoursesMasonryComponent from "./components/courses_masonry";
+import { findCourses } from "./lib/actions/actions";
 
-export default function Home() {
+export default async function Home() {
+  const courseShows = await findCourses(0, 3);
+
+  console.log(courseShows);
+
   return (
-   <div>HomePage</div>
+    <div>
+      <CoursesMasonryComponent
+        coursesShows={JSON.parse(JSON.stringify(courseShows))}
+      />
+    </div>
   );
 }
